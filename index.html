@@ -1,30 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Code Verification1</title>
-	<script>
-		// Pre-encrypted code
-		var encryptedCode = "d0f32d09d57028487da08e91c51868cc43b3551dda49d47dfa0eda7f2d36e3ce";
-		
-		// Function to check if entered code matches encrypted code
-		function checkCode() {
-			var enteredCode = document.getElementById("code-input").value;
-			var decryptedCode = CryptoJS.MD5(enteredCode).toString(); // Decrypt the entered code using MD5 hashing
-			if (decryptedCode === encryptedCode) {
-				document.getElementById("code-input").value = ""; // Clear the input box
-				alert("You're in!"); // Display the success message
-			}
-			else {
-				alert("Wrong code! Please try again."); // Display the error message
-			}
+	<title>Login Page</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
 		}
-	</script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+		form {
+			border: 1px solid #ccc;
+			padding: 20px;
+			max-width: 400px;
+			margin: 0 auto;
+		}
+		label {
+			display: block;
+			margin-bottom: 10px;
+		}
+		input[type="text"], input[type="password"] {
+			padding: 10px;
+			margin-bottom: 20px;
+			width: 100%;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			box-sizing: border-box;
+			font-size: 16px;
+		}
+		button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 3px;
+			cursor: pointer;
+			font-size: 16px;
+		}
+	</style>
 </head>
 <body>
-	<h1>Code Verification</h1>
-	<label for="code-input">Enter the code:</label>
-	<input type="text" id="code-input">
-	<button onclick="checkCode()">Verify Code</button>
+	<form>
+		<label for="username">Username:</label>
+		<input type="text" id="username" name="username" required>
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="password" required>
+		<button type="submit">Sign In</button>
+	</form>
 </body>
 </html>
