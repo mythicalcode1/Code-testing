@@ -38,11 +38,20 @@
 </head>
 <body>
 	<form>
-		<label for="username">Username:</label>
-		<input type="text" id="username" name="username" required>
-		<label for="password">Password:</label>
-		<input type="password" id="password" name="password" required>
-		<button type="submit">Sign In</button>
+		<label for="code">Code:</label>
+		<input type="text" id="code" name="code" required>
+		<button type="button" onclick="checkCode()">Submit</button>
 	</form>
+
+	<script>
+		function checkCode() {
+			var code = document.getElementById("code").value;
+			if (code === "abcd") {
+				document.getElementsByTagName("html")[0].innerHTML = "<body><input type='text' value='Congrats!' readonly></body>";
+			} else {
+				alert("Incorrect code.");
+			}
+		}
+	</script>
 </body>
 </html>
