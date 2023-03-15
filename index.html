@@ -1,19 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Random Number Generator</title>
+	<title>Code Verification</title>
 	<script>
-		function generateRandomNumber() {
-			var randomNumber = Math.floor(Math.random() * 100) + 1;
-			document.getElementById("output").value = randomNumber;
+		// Pre-encrypted code
+		var encryptedCode = "2c6ee3a6f3ce3b3d76f4a6b8ba6d29ad";
+		
+		// Function to check if entered code matches encrypted code
+		function checkCode() {
+			var enteredCode = document.getElementById("code-input").value;
+			var decryptedCode = CryptoJS.MD5(enteredCode).toString(); // Decrypt the entered code using MD5 hashing
+			if (decryptedCode === encryptedCode) {
+				document.getElementById("code-input").value = ""; // Clear the input box
+				alert("You're in!"); // Display the success message
+			}
+			else {
+				alert("Wrong code! Please try again."); // Display the error message
+			}
 		}
 	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </head>
 <body>
-	<h1>Random Number Generator</h1>
-	<button onclick="generateRandomNumber()">Generate Random Number</button>
-	<br><br>
-	<label for="output">Your random number is:</label>
-	<input type="text" id="output" readonly>
+	<h1>Code Verification</h1>
+	<label for="code-input">Enter the code:</label>
+	<input type="text" id="code-input">
+	<button onclick="checkCode()">Verify Code</button>
 </body>
 </html>
